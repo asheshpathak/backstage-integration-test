@@ -1,0 +1,31 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "database-demo-2"
+  description: "A project that exposes the customers table as a service"
+  links:
+    - title: TIBCO Cloud Home
+      url: https://cloud.tibco.com/
+    - title: Documentation
+      url: https://eu.integration.cloud.tibco.com/docs/index.html
+    - title: TIBCO Cloud Integration
+      url: https://eu.integration.cloud.tibco.com/applications
+  annotations:
+    github.com/project-slug: TIBCO-Hub-Backstage/database-demo-2
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: database-demo-2
+    jenkins.io/job-full-name: Build_BWCE_EAR_DB
+spec:
+  type: service
+  lifecycle: development
+  system: data-table-exposure
+  owner: "group:default/acme"
+  providesApis: [ "database-demo-2-api" ]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: database-demo-2-api-location
+spec:
+  targets:
+    - ./catalog-api.yaml
